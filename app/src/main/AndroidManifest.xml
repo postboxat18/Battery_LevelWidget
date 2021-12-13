@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.examples.batterylevel">
-
+<uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -20,7 +20,9 @@
         </receiver>
 
         <!-- Service to perform widget screen updates -->
-        <service android:name=".BatteryWidget$UpdateService" />
+        <service android:name=".BatteryWidget$UpdateService"
+
+            />
 
         <receiver android:name=".BatteryInfo" android:label="BatteryInfo"
             android:exported="true">

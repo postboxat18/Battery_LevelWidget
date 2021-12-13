@@ -1,6 +1,9 @@
 package com.examples.batterylevel;
 
 import android.app.ApplicationErrorReport;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.appwidget.AppWidgetManager;
@@ -9,13 +12,18 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.BatteryManager;
+import android.os.Build;
 import android.os.IBinder;
 import android.util.Log;
 import android.view.View;
 import android.widget.RemoteViews;
+
+import androidx.core.app.NotificationCompat;
+import androidx.core.content.ContextCompat;
 
 /**
  * Define a simple widget that shows a battery meter. To build
@@ -25,7 +33,7 @@ public class BatteryWidget extends AppWidgetProvider {
 
     public static final String LOG_TAG = BatteryWidget.class.getSimpleName();
     //public static final int SDK_VERSION = Integer.parseInt(android.os.Build.VERSION.SDK); //1.5 version
-    public static final int SDK_VERSION = android.os.Build.VERSION.SDK_INT;
+    //public static final int SDK_VERSION = android.os.Build.VERSION.SDK_INT;
     public static final String KEY_SCALE = "KEY_SCALE";
     public static String PREFS_NAME="BATWIDG_PREFS";
     public static String KEY_LEVEL = "BATWIDG_LEVEL";
@@ -60,7 +68,19 @@ public class BatteryWidget extends AppWidgetProvider {
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager,int[] appWidgetIds) {
         // To prevent any ANR timeouts, we perform the update in a service
-        context.startService(new Intent(context, UpdateService.class));
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            /*context.startForegroundService(new Intent(context, UpdateService.class));*/
+            Intent serviceIntent = new Intent(context, UpdateService.class);
+            ContextCompat.startForegroundService(context, serviceIntent );
+
+        }
+        else
+        {
+            /*context.startService(new Intent(context, UpdateService.class));*/
+            Intent serviceIntent = new Intent(context, UpdateService.class);
+            context.startService(serviceIntent);
+        }
     }
 
     private static void clearSettings(Context context) {
@@ -115,7 +135,24 @@ public class BatteryWidget extends AppWidgetProvider {
                 }
             }
         }
+        @Override
+        public void onCreate() {
+            super.onCreate();
+            if (Build.VERSION.SDK_INT >= 26) {
+                String CHANNEL_ID = "my_channel_01";
+                NotificationChannel channel = new NotificationChannel(CHANNEL_ID,
+                        "Channel human readable title",
+                        NotificationManager.IMPORTANCE_DEFAULT);
 
+                ((NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE)).createNotificationChannel(channel);
+
+                Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
+                        .setContentTitle("")
+                        .setContentText("").build();
+
+                startForeground(1, notification);
+            }
+        }
         @Override
         public void onDestroy() {
             super.onDestroy();
@@ -130,6 +167,7 @@ public class BatteryWidget extends AppWidgetProvider {
          * "Word of the day." Will block until the online API returns.
          */
         public RemoteViews buildUpdate(Context context) {
+
             // Build an update that holds the updated widget contents
             RemoteViews updateViews = new RemoteViews(context.getPackageName(), R.layout.battery_widget);
             try
