@@ -1,5 +1,7 @@
 package com.examples.batterylevel;
 
+import static androidx.core.app.ServiceCompat.stopForeground;
+
 import android.app.ApplicationErrorReport;
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -21,6 +23,7 @@ import android.os.IBinder;
 import android.util.Log;
 import android.view.View;
 import android.widget.RemoteViews;
+import android.widget.Toast;
 
 import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
@@ -98,10 +101,28 @@ public class BatteryWidget extends AppWidgetProvider {
     public static class UpdateService extends Service {
 
         BatteryInfo mBI = null;
+        public static final String ACTION_STOP_FOREGROUND_SERVICE = "ACTION_STOP_FOREGROUND_SERVICE";
 
         @Override
-        public void onStart(Intent intent, int startId) {
+        public int onStartCommand(Intent intents, int flags, int startId) {
+            if (intents != null) {
+                String action = intents.getAction();
+                if(action!=null)
+                    switch (action) {
+                        case ACTION_STOP_FOREGROUND_SERVICE:
+                            //stop the service, clear up memory, can't do this, need the Broadcast Receiver running
+                            stopSelf();
+                            Toast.makeText(getApplicationContext(), "Foreground service is stopped.", Toast.LENGTH_LONG).show();
+                            break;
+                    }
+            }
 
+            return super.onStartCommand(intents, flags, startId);
+            //return START_STICKY;
+
+        }
+        @Override
+        public void onStart(Intent intent, int startId) {
             if(mBI == null)
             {
                 mBI = new BatteryInfo();

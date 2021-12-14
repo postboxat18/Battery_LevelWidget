@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.examples.batterylevel">
-<uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,29 +10,40 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BatteryLevel">
-
-
-        <receiver android:name=".BatteryWidget" android:label="@string/add_widget"
+        <activity
+            android:name=".wbutton.ButtonActivity"
             android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
+
+        <receiver
+            android:name=".BatteryWidget"
+            android:exported="true"
+            android:label="@string/add_widget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
-            <meta-data android:name="android.appwidget.provider" android:resource="@xml/battery_widget_info" />
-        </receiver>
 
-        <!-- Service to perform widget screen updates -->
-        <service android:name=".BatteryWidget$UpdateService"
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/battery_widget_info" />
+        </receiver> <!-- Service to perform widget screen updates -->
+        <service android:name=".BatteryWidget$UpdateService" />
 
-            />
-
-        <receiver android:name=".BatteryInfo" android:label="BatteryInfo"
-            android:exported="true">
+        <receiver
+            android:name=".BatteryInfo"
+            android:exported="true"
+            android:label="BatteryInfo">
             <intent-filter>
                 <action android:name="android.intent.action.BATTERY_CHANGED" />
             </intent-filter>
         </receiver>
 
-        <activity
+       <!-- <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -39,7 +51,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+        </activity>-->
     </application>
 
 </manifest>
