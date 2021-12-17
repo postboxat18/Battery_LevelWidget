@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,17 +9,74 @@
     android:layout_gravity="center"
     android:gravity="center"
     android:orientation="vertical">
-    <Button
-        android:id="@+id/start_foreground_service_button"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_gravity="center"
-        android:layout_height="wrap_content"
-        android:text="Start Service" />
-    <Button
-        android:id="@+id/stop_foreground_service_button"
-        android:layout_width="match_parent"
-        android:layout_gravity="center"
-        android:layout_height="wrap_content"
-        android:text="Stop Service" />
+        android:gravity="center"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="BATTERY MANAGER"
+            android:textSize="25dp"
+            android:gravity="center"
+            android:textColor="#000000"
+            />
+        <me.itangqi.waveloadingview.WaveLoadingView
+            android:id="@+id/waveLoadingView"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            app:wlv_borderColor="#FF5722"
+            app:wlv_borderWidth="3dp"
+            app:wlv_progressValue="40"
+            app:wlv_shapeType="circle"
+            app:wlv_round_rectangle="true"
+            app:wlv_triangle_direction="north"
+            app:wlv_titleCenterStrokeWidth="3dp"
+            app:wlv_waveColor="#C6E6F4"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:padding="@dimen/abc_action_bar_icon_vertical_padding_material"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="25dp"
+            android:text="Battery Status"
+            android:id="@+id/txtbattery_status"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:padding="@dimen/abc_action_bar_icon_vertical_padding_material"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:id="@+id/txtstatus"
+            android:outlineProvider="paddedBounds"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:padding="@dimen/abc_action_bar_icon_vertical_padding_material"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:id="@+id/txtcharge_status"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:padding="@dimen/abc_action_bar_icon_vertical_padding_material"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/txtport"/>
+        <Button
+            android:id="@+id/start_foreground_service_button"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text="Start Service" />
+        <Button
+            android:id="@+id/stop_foreground_service_button"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text="Stop Service" />
+    </LinearLayout>
 
-</LinearLayout>
+
+</ScrollView>
