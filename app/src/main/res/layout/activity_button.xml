@@ -5,11 +5,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".wbutton.ButtonActivity">
+    tools:context=".wbutton.ButtonActivity"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="vertical">
+    <Button
+        android:id="@+id/start_foreground_service_button"
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:text="Start Service" />
     <Button
         android:id="@+id/stop_foreground_service_button"
         android:layout_width="match_parent"
         android:layout_gravity="center"
         android:layout_height="wrap_content"
-        android:text="Start &amp; Stop Service" />
+        android:text="Stop Service" />
+
 </LinearLayout>

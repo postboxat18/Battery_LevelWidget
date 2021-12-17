@@ -17,6 +17,8 @@ import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.BatteryManager;
 import android.os.Build;
 import android.os.IBinder;
@@ -102,6 +104,8 @@ public class BatteryWidget extends AppWidgetProvider {
 
         BatteryInfo mBI = null;
         public static final String ACTION_STOP_FOREGROUND_SERVICE = "ACTION_STOP_FOREGROUND_SERVICE";
+        public static final String ACTION_START_FOREGROUND_SERVICE = "ACTION_START_FOREGROUND_SERVICE";
+        private int level=0;
 
         @Override
         public int onStartCommand(Intent intents, int flags, int startId) {
@@ -109,6 +113,13 @@ public class BatteryWidget extends AppWidgetProvider {
                 String action = intents.getAction();
                 if(action!=null)
                     switch (action) {
+                        case ACTION_START_FOREGROUND_SERVICE:
+                            if (Build.VERSION.SDK_INT >= 26) {
+
+                            }
+                            Toast.makeText(getApplicationContext(), "Foreground service is started.", Toast.LENGTH_LONG).show();
+
+                            break;
                         case ACTION_STOP_FOREGROUND_SERVICE:
                             //stop the service, clear up memory, can't do this, need the Broadcast Receiver running
                             stopSelf();
@@ -160,18 +171,53 @@ public class BatteryWidget extends AppWidgetProvider {
         public void onCreate() {
             super.onCreate();
             if (Build.VERSION.SDK_INT >= 26) {
+              /*  String CHANNEL_ID = "my_channel_01";
+                NotificationChannel channel = new NotificationChannel(CHANNEL_ID,
+                        "Channel human readable title",
+                        NotificationManager.IMPORTANCE_DEFAULT);
+
+                ((NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE)).createNotificationChannel(channel);
+                Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
+                        .setContentTitle("")
+                        .setContentText("").build();
+                startForeground(1, notification);*/
+
+                ///////////
+                Intent intent = new Intent();
+                PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+                // Create notification builder.
+                /*------------------------------------------------------------------*/
                 String CHANNEL_ID = "my_channel_01";
                 NotificationChannel channel = new NotificationChannel(CHANNEL_ID,
                         "Channel human readable title",
                         NotificationManager.IMPORTANCE_DEFAULT);
 
                 ((NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE)).createNotificationChannel(channel);
+                /*------------------------------------------------------------------*/
+                //NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(this,CHANNEL_ID);
+                // Make notification show big text.
+                NotificationCompat.BigTextStyle bigTextStyle = new NotificationCompat.BigTextStyle();
+                bigTextStyle.setBigContentTitle("Phone Percentage ");
+                Log.e("Battery", "Batterypercentage" + level);
+                bigTextStyle.bigText(level + " %");
+                builder.setStyle(bigTextStyle);
+                builder.setSmallIcon(R.mipmap.ic_launcher);
+                Bitmap largeIconBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher_background);
+                builder.setLargeIcon(largeIconBitmap);
+                // Make the notification max priority.
+                builder.setPriority(Notification.FLAG_ONLY_ALERT_ONCE);
+                // Make head-up notification.
+                builder.setFullScreenIntent(pendingIntent, true);
 
-                Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
-                        .setContentTitle("")
-                        .setContentText("").build();
+                // Build the notification.
+                Notification notification = builder.build();
 
+                // Start foreground service.
                 startForeground(1, notification);
+                //////////////
+
+
             }
         }
         @Override
@@ -194,7 +240,6 @@ public class BatteryWidget extends AppWidgetProvider {
             try
             {
                 //Log.d("BatteryWidget","Updating Views");
-                int level = 0;
                 boolean charging = false;
                 SharedPreferences settings = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
                 if(settings !=null)
@@ -234,7 +279,8 @@ public class BatteryWidget extends AppWidgetProvider {
                 }
 
                 updateViews.setViewVisibility(R.id.charging, charging?View.VISIBLE:View.INVISIBLE);
-
+                batterlevel(level);
+                Log.e("BatteryWidget","levels"+level);
                 String levelText = level==100?"100":level+"%"; //100% too wide
                 if(level == 0) levelText=" 0%";
                 updateViews.setTextViewText(R.id.batterytext, levelText);
@@ -256,7 +302,89 @@ public class BatteryWidget extends AppWidgetProvider {
             return updateViews;
         }
 
+        private void batterlevel(int level) {
+            if (Build.VERSION.SDK_INT >= 26) {
+              /*  String CHANNEL_ID = "my_channel_01";
+                NotificationChannel channel = new NotificationChannel(CHANNEL_ID,
+                        "Channel human readable title",
+                        NotificationManager.IMPORTANCE_DEFAULT);
+
+                ((NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE)).createNotificationChannel(channel);
+                Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
+                        .setContentTitle("")
+                        .setContentText("").build();
+                startForeground(1, notification);*/
+
+                ///////////
+                Intent intent = new Intent();
+                PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+                // Create notification builder.
+                /*------------------------------------------------------------------*/
+                String CHANNEL_ID = "my_channel_01";
+                NotificationChannel channel = new NotificationChannel(CHANNEL_ID,
+                        "Channel human readable title",
+                        NotificationManager.IMPORTANCE_DEFAULT);
+
+                ((NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE)).createNotificationChannel(channel);
+                /*------------------------------------------------------------------*/
+                //NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(this,CHANNEL_ID);
+                // Make notification show big text.
+                NotificationCompat.BigTextStyle bigTextStyle = new NotificationCompat.BigTextStyle();
+                bigTextStyle.setBigContentTitle("Phone Percentage ");
+                Log.e("Battery", "Batterypercentage" + level);
+                bigTextStyle.bigText(level + " %");
+                builder.setStyle(bigTextStyle);
+                builder.setSmallIcon(R.mipmap.ic_launcher);
+                Bitmap largeIconBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher_background);
+                builder.setLargeIcon(largeIconBitmap);
+                // Make the notification max priority.
+                builder.setPriority(Notification.DEFAULT_ALL);
+                // Make head-up notification.
+                builder.setFullScreenIntent(pendingIntent, true);
+
+                // Build the notification.
+                Notification notification = builder.build();
+
+                // Start foreground service.
+                startForeground(1, notification);
+                //////////////
+
+
+            }
+        }
+
         @Override public IBinder onBind(Intent intent) {return null;}
+        /*private void runAsForeground(){
+            // Create notification default intent.
+            if (Build.VERSION.SDK_INT >= 26) {
+                Intent intent = new Intent();
+                PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+
+                // Create notification builder.
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
+                // Make notification show big text.
+                NotificationCompat.BigTextStyle bigTextStyle = new NotificationCompat.BigTextStyle();
+                bigTextStyle.setBigContentTitle("Phone Percentage ");
+                Log.e("Battery", "Batterypercentage" + level);
+                bigTextStyle.bigText(level + " %");
+                builder.setStyle(bigTextStyle);
+                builder.setSmallIcon(R.mipmap.ic_launcher);
+                Bitmap largeIconBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher_background);
+                builder.setLargeIcon(largeIconBitmap);
+                // Make the notification max priority.
+                builder.setPriority(Notification.FLAG_ONLY_ALERT_ONCE);
+                // Make head-up notification.
+                builder.setFullScreenIntent(pendingIntent, true);
+
+                // Build the notification.
+                Notification notification = builder.build();
+
+                // Start foreground service.
+                startForeground(1, notification);
+            }
+
+        }*/
     }
 
 }

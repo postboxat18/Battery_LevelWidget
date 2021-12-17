@@ -17,6 +17,15 @@ public class ButtonActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_button);
         Button stopServiceButton = (Button) findViewById(R.id.stop_foreground_service_button);
+        Button startServiceButton = (Button) findViewById(R.id.start_foreground_service_button);
+        startServiceButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ButtonActivity.this, BatteryWidget.UpdateService.class);
+                intent.setAction(BatteryWidget.UpdateService.ACTION_START_FOREGROUND_SERVICE);
+                startService(intent);
+            }
+        });
         stopServiceButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
