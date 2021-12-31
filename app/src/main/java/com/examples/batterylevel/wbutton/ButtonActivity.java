@@ -1,6 +1,7 @@
 package com.examples.batterylevel.wbutton;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -32,8 +33,9 @@ public class ButtonActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_button);
-        Button stopServiceButton = (Button) findViewById(R.id.stop_foreground_service_button);
-        Button startServiceButton = (Button) findViewById(R.id.start_foreground_service_button);
+        AppCompatButton stopServiceButton = (AppCompatButton) findViewById(R.id.stop_foreground_service_button);
+        AppCompatButton startServiceButton = (AppCompatButton) findViewById(R.id.start_foreground_service_button);
+
         startServiceButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,27 +63,66 @@ public class ButtonActivity extends AppCompatActivity {
             @Override
             public void onReceive(Context context, Intent intent) {
                 Integer integerBatteryLevel = intent.getIntExtra(BatteryManager.EXTRA_LEVEL,0);
-                i= Integer.parseInt(integerBatteryLevel.toString());
-                Log.e("Battery","BatteryLevel"+i);
-                if(i>=50 && i<=75){
+                //i= Integer.parseInt(integerBatteryLevel.toString());
+
+                //Log.e("Battery","BatteryLevel"+i);
+              /*  if(i>=50 && i<=75){
                     txtstatus.setText("Battery Status: Moderate");
+                    mWaveLoadingView.setWaveColor(Color.parseColor("#B2DFDB"));
+                    mWaveLoadingView.setBorderColor(Color.parseColor("#4CAF50"));
                 }
                 else if (i>=75 && i<=99){
                     txtstatus.setText("Battery Status: GOOD");
+                    mWaveLoadingView.setWaveColor(Color.parseColor("#FF0AC511"));
+                    mWaveLoadingView.setBorderColor(Color.parseColor("#FF37FF00"));
                 }
                 else if (i>=20 && i<=49){
                     txtstatus.setText("Battery Status: Draining");
+                    mWaveLoadingView.setWaveColor(Color.parseColor("#FF6600"));
+                    mWaveLoadingView.setBorderColor(Color.parseColor("#c0392b"));
                 }
                 else if (i>=10 && i<=20){
                     txtstatus.setText("Battery Status: LOW");
+                    mWaveLoadingView.setWaveColor(Color.parseColor("#c0392b"));
+                    mWaveLoadingView.setBorderColor(Color.parseColor("#E42434"));
                 }
                 else if (i<10){
                     txtstatus.setText("Battery Status: Critically Low, Please Charge the Device!");
+                    mWaveLoadingView.setWaveColor(Color.parseColor("#E42434"));
+                    mWaveLoadingView.setBorderColor(Color.parseColor("#FF0000"));
                 }
                 else if (i==100){
-
                     txtstatus.setText("Battery Status: Fully Charged");
+                    mWaveLoadingView.setWaveColor(Color.parseColor("#FF26FF00"));
+                    mWaveLoadingView.setBorderColor(Color.parseColor("#FF26FF00"));
+                } */
+                i=100;
+                if (i<10){
+                    txtstatus.setText("Battery Status: Critically Low, Please Charge the Device!");
+                    mWaveLoadingView.setWaveColor(Color.parseColor("#FC0404"));
+                    mWaveLoadingView.setBorderColor(Color.parseColor("#D40C1C"));
                 }
+                else if (i>=10 && i<=20){
+                    txtstatus.setText("Battery Status: LOW");
+                    mWaveLoadingView.setWaveColor(Color.parseColor("#FC0412"));
+                    mWaveLoadingView.setBorderColor(Color.parseColor("#FC0404"));
+                }
+                else if (i>20 && i<=50){
+                    txtstatus.setText("Battery Status: Draining");
+                    mWaveLoadingView.setWaveColor(Color.parseColor("#FCCC04"));
+                    mWaveLoadingView.setBorderColor(Color.parseColor("#F4BB13"));
+                }else if (i>50 && i<=80){
+                    txtstatus.setText("Battery Status: Moderate");
+                    mWaveLoadingView.setWaveColor(Color.parseColor("#94EC94"));
+                    mWaveLoadingView.setBorderColor(Color.parseColor("#4BBC54"));
+                }
+                else if (i>80 && i<=100){
+                    txtstatus.setText("Battery Status: GOOD");
+                    mWaveLoadingView.setWaveColor(Color.parseColor("#04E474"));
+                    mWaveLoadingView.setBorderColor(Color.parseColor("#04E474"));
+                }
+
+
                 mWaveLoadingView.setTopTitle(i+"%");
                 mWaveLoadingView.setCenterTitleColor(Color.WHITE);
                 mWaveLoadingView.setCenterTitle("");
@@ -89,8 +130,8 @@ public class ButtonActivity extends AppCompatActivity {
                 mWaveLoadingView.setProgressValue(0);
                 mWaveLoadingView.setBorderWidth(5);
                 mWaveLoadingView.setAmplitudeRatio(100);
-                mWaveLoadingView.setWaveColor(Color.parseColor("#B2DFDB"));
-                mWaveLoadingView.setBorderColor(Color.parseColor("#4CAF50"));
+//                mWaveLoadingView.setWaveColor(Color.parseColor("#B2DFDB"));
+//                mWaveLoadingView.setBorderColor(Color.parseColor("#4CAF50"));
                 mWaveLoadingView.setTopTitleStrokeColor(Color.WHITE);
                 mWaveLoadingView.setTopTitleStrokeWidth(3);
                 mWaveLoadingView.setWaterLevelRatio(0.2f);

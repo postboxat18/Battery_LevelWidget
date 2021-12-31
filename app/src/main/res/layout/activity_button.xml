@@ -19,6 +19,7 @@
             android:layout_height="wrap_content"
             android:text="BATTERY MANAGER"
             android:textSize="25dp"
+            android:fontFamily="@font/open_sans_semibold"
             android:gravity="center"
             android:textColor="#000000"
             />
@@ -40,6 +41,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textSize="25dp"
+            android:fontFamily="@font/open_sans_semibold"
             android:text="Battery Status"
             android:id="@+id/txtbattery_status"
             />
@@ -64,18 +66,44 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:id="@+id/txtport"/>
-        <Button
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            >
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/start_foreground_service_button"
             android:layout_width="wrap_content"
             android:layout_gravity="center"
+            android:padding="10dp"
+            android:fontFamily="@font/open_sans_semibold"
+            android:layout_margin="10dp"
+            android:background="@drawable/button_start"
             android:layout_height="wrap_content"
-            android:text="Start Service" />
-        <Button
+            android:textColor="@color/white"
+            android:text="Start Service"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/stop_foreground_service_button"
+            />
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/stop_foreground_service_button"
             android:layout_width="wrap_content"
             android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:padding="12dp"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/open_sans_semibold"
+            android:background="@drawable/button_stop"
             android:layout_height="wrap_content"
-            android:text="Stop Service" />
+            android:text="Stop Service"
+            app:layout_constraintStart_toStartOf="@id/start_foreground_service_button"
+            app:layout_constraintEnd_toEndOf="@id/start_foreground_service_button"
+            app:layout_constraintTop_toBottomOf="@id/start_foreground_service_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 
 
