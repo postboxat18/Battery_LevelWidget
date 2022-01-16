@@ -3,6 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/aravi/StudioProjects/Battery_LevelWidget/app/src/main/res/drawable-v21/circle.xml" value="0.264" />
+        <entry key="..\:/Users/aravi/StudioProjects/Battery_LevelWidget/app/src/main/res/drawable/ic__100_.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/aravi/StudioProjects/Battery_LevelWidget/app/src/main/res/drawable/ic__25_.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/aravi/StudioProjects/Battery_LevelWidget/app/src/main/res/drawable/ic__50_.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/aravi/StudioProjects/Battery_LevelWidget/app/src/main/res/drawable/ic__5_.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/aravi/StudioProjects/Battery_LevelWidget/app/src/main/res/drawable/ic___0_.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/aravi/StudioProjects/Battery_LevelWidget/app/src/main/res/layout/activity_button.xml" value="0.25" />
+        <entry key="..\:/Users/aravi/StudioProjects/Battery_LevelWidget/app/src/main/res/layout/activity_main.xml" value="0.72" />
+        <entry key="..\:/Users/aravi/StudioProjects/Battery_LevelWidget/app/src/main/res/layout/battery_circle.xml" value="0.152" />
+        <entry key="..\:/Users/aravi/StudioProjects/Battery_LevelWidget/app/src/main/res/layout/battery_widget.xml" value="0.25" />
         <entry key="app/src/main/res/drawable/button_box.xml" value="0.209375" />
         <entry key="app/src/main/res/drawable/button_stop.xml" value="0.209375" />
         <entry key="app/src/main/res/font/open_sans_semibold.xml" value="0.2234375" />
