@@ -236,7 +236,7 @@ public class BatteryWidget extends AppWidgetProvider {
         public RemoteViews buildUpdate(Context context) {
 
             // Build an update that holds the updated widget contents
-            RemoteViews updateViews = new RemoteViews(context.getPackageName(), R.layout.battery_widget);
+            RemoteViews updateViews = new RemoteViews(context.getPackageName(), R.layout.battery_circle);
             try
             {
                 //Log.d("BatteryWidget","Updating Views");
@@ -257,24 +257,36 @@ public class BatteryWidget extends AppWidgetProvider {
                     charging = (settings.getInt(KEY_CHARGING, BatteryManager.BATTERY_STATUS_UNKNOWN)==BatteryManager.BATTERY_STATUS_CHARGING);
                 }
 
-                if(level>20)
+                level=88;
+                if(level==100)
                 {
-                    updateViews.setViewVisibility(R.id.bar100, level>80?View.VISIBLE:View.INVISIBLE);
+                    /*updateViews.setViewVisibility(R.id.bar100, level>80?View.VISIBLE:View.INVISIBLE);
                     updateViews.setViewVisibility(R.id.bar80, level>60?View.VISIBLE:View.INVISIBLE);
                     updateViews.setViewVisibility(R.id.bar60, level>40?View.VISIBLE:View.INVISIBLE);
                     updateViews.setViewVisibility(R.id.bar40, level>20?View.VISIBLE:View.INVISIBLE);
                     updateViews.setViewVisibility(R.id.bar20, View.VISIBLE);
-                    updateViews.setImageViewResource(R.id.bar20, R.drawable.bar_green);
-
+                    updateViews.setImageViewResource(R.id.bar20, R.drawable.bar_green);*/
+                    updateViews.setViewVisibility(R.id.per100,level==100?View.VISIBLE:View.INVISIBLE);
                     updateViews.setViewVisibility(R.id.batterytext, View.VISIBLE);
-                }else
+                }else if(level>=75 && level<100)
                 {
-                    updateViews.setViewVisibility(R.id.bar100, View.INVISIBLE);
+                    /*updateViews.setViewVisibility(R.id.bar100, View.INVISIBLE);
                     updateViews.setViewVisibility(R.id.bar80, View.INVISIBLE);
                     updateViews.setViewVisibility(R.id.bar60, View.INVISIBLE);
                     updateViews.setViewVisibility(R.id.bar40, View.INVISIBLE);
                     updateViews.setViewVisibility(R.id.bar20, View.VISIBLE);
-                    updateViews.setImageViewResource(R.id.bar20, R.drawable.bar_red);
+                    updateViews.setImageViewResource(R.id.bar20, R.drawable.bar_red);*/
+                    updateViews.setViewVisibility(R.id.per75,level>=75?View.VISIBLE:View.INVISIBLE);
+                    updateViews.setViewVisibility(R.id.batterytext, View.VISIBLE);
+                }
+                else if (level>=50 && level<=75)
+                {
+                    updateViews.setViewVisibility(R.id.per50,level>=50?View.VISIBLE:View.INVISIBLE);
+                    updateViews.setViewVisibility(R.id.batterytext, View.VISIBLE);
+                }
+                else if (level>=25 && level<=50)
+                {
+                    updateViews.setViewVisibility(R.id.per25,level>=25?View.VISIBLE:View.INVISIBLE);
                     updateViews.setViewVisibility(R.id.batterytext, View.VISIBLE);
                 }
 
