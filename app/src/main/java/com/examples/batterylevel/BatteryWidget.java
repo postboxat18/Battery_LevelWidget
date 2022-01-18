@@ -256,8 +256,6 @@ public class BatteryWidget extends AppWidgetProvider {
 
                     charging = (settings.getInt(KEY_CHARGING, BatteryManager.BATTERY_STATUS_UNKNOWN)==BatteryManager.BATTERY_STATUS_CHARGING);
                 }
-
-                level=88;
                 if(level==100)
                 {
                     /*updateViews.setViewVisibility(R.id.bar100, level>80?View.VISIBLE:View.INVISIBLE);

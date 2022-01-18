@@ -63,7 +63,7 @@ public class ButtonActivity extends AppCompatActivity {
             @Override
             public void onReceive(Context context, Intent intent) {
                 Integer integerBatteryLevel = intent.getIntExtra(BatteryManager.EXTRA_LEVEL,0);
-                //i= Integer.parseInt(integerBatteryLevel.toString());
+                i= Integer.parseInt(integerBatteryLevel.toString());
 
                 //Log.e("Battery","BatteryLevel"+i);
               /*  if(i>=50 && i<=75){
@@ -96,7 +96,6 @@ public class ButtonActivity extends AppCompatActivity {
                     mWaveLoadingView.setWaveColor(Color.parseColor("#FF26FF00"));
                     mWaveLoadingView.setBorderColor(Color.parseColor("#FF26FF00"));
                 } */
-                i=100;
                 if (i<10){
                     txtstatus.setText("Battery Status: Critically Low, Please Charge the Device!");
                     mWaveLoadingView.setWaveColor(Color.parseColor("#FC0404"));
