@@ -256,24 +256,25 @@ public class BatteryWidget extends AppWidgetProvider {
 
                     charging = (settings.getInt(KEY_CHARGING, BatteryManager.BATTERY_STATUS_UNKNOWN)==BatteryManager.BATTERY_STATUS_CHARGING);
                 }
-                if(level==100)
+
+                /*if(level==100)
                 {
-                    /*updateViews.setViewVisibility(R.id.bar100, level>80?View.VISIBLE:View.INVISIBLE);
+                    *//*updateViews.setViewVisibility(R.id.bar100, level>80?View.VISIBLE:View.INVISIBLE);
                     updateViews.setViewVisibility(R.id.bar80, level>60?View.VISIBLE:View.INVISIBLE);
                     updateViews.setViewVisibility(R.id.bar60, level>40?View.VISIBLE:View.INVISIBLE);
                     updateViews.setViewVisibility(R.id.bar40, level>20?View.VISIBLE:View.INVISIBLE);
                     updateViews.setViewVisibility(R.id.bar20, View.VISIBLE);
-                    updateViews.setImageViewResource(R.id.bar20, R.drawable.bar_green);*/
+                    updateViews.setImageViewResource(R.id.bar20, R.drawable.bar_green);*//*
                     updateViews.setViewVisibility(R.id.per100,level==100?View.VISIBLE:View.INVISIBLE);
                     updateViews.setViewVisibility(R.id.batterytext, View.VISIBLE);
                 }else if(level>=75 && level<100)
                 {
-                    /*updateViews.setViewVisibility(R.id.bar100, View.INVISIBLE);
+                    *//*updateViews.setViewVisibility(R.id.bar100, View.INVISIBLE);
                     updateViews.setViewVisibility(R.id.bar80, View.INVISIBLE);
                     updateViews.setViewVisibility(R.id.bar60, View.INVISIBLE);
                     updateViews.setViewVisibility(R.id.bar40, View.INVISIBLE);
                     updateViews.setViewVisibility(R.id.bar20, View.VISIBLE);
-                    updateViews.setImageViewResource(R.id.bar20, R.drawable.bar_red);*/
+                    updateViews.setImageViewResource(R.id.bar20, R.drawable.bar_red);*//*
                     updateViews.setViewVisibility(R.id.per75,level>=75?View.VISIBLE:View.INVISIBLE);
                     updateViews.setViewVisibility(R.id.batterytext, View.VISIBLE);
                 }
@@ -286,13 +287,14 @@ public class BatteryWidget extends AppWidgetProvider {
                 {
                     updateViews.setViewVisibility(R.id.per25,level>=25?View.VISIBLE:View.INVISIBLE);
                     updateViews.setViewVisibility(R.id.batterytext, View.VISIBLE);
-                }
+                }*/
 
                 updateViews.setViewVisibility(R.id.charging, charging?View.VISIBLE:View.INVISIBLE);
                 batterlevel(level);
                 Log.e("BatteryWidget","levels"+level);
                 String levelText = level==100?"100":level+"%"; //100% too wide
                 if(level == 0) levelText=" 0%";
+                updateViews.setProgressBar(R.id.progress_bar,100,level,false);
                 updateViews.setTextViewText(R.id.batterytext, levelText);
             }catch(Exception e)
             {

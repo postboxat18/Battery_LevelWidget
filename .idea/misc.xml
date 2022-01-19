@@ -10,11 +10,13 @@
         <entry key="app/src/main/res/drawable/ic__100_.xml" value="0.10520833333333333" />
         <entry key="app/src/main/res/drawable/ic__50_.xml" value="0.10520833333333333" />
         <entry key="app/src/main/res/drawable/ic__75__.xml" value="0.10520833333333333" />
+        <entry key="app/src/main/res/drawable/ic_lightning_charge.xml" value="0.209375" />
         <entry key="app/src/main/res/drawable/ic_phone.xml" value="0.10520833333333333" />
+        <entry key="app/src/main/res/drawable/progress_circle.xml" value="0.209375" />
         <entry key="app/src/main/res/font/open_sans_semibold.xml" value="0.2234375" />
         <entry key="app/src/main/res/layout/activity_button.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.178125" />
-        <entry key="app/src/main/res/layout/battery_circle.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/battery_circle.xml" value="1.1" />
         <entry key="app/src/main/res/layout/battery_widget.xml" value="0.18" />
       </map>
     </option>

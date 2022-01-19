@@ -2,16 +2,17 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/widget"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:focusable="true"
     android:padding="@dimen/widget_margin">
 
-    <LinearLayout
+    <!--<LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="5dp"
+        android:visibility="gone"
         android:background="@drawable/edittext_box"
         >
         <RelativeLayout
@@ -65,5 +66,63 @@
             android:textColor="@color/white"
             android:typeface="sans"
             android:visibility="invisible" />
+    </LinearLayout>-->
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:background="@drawable/edittext_box"
+        >
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="@dimen/width_widget"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:indeterminate="false"
+            android:max="100"
+            android:progress="0"
+            android:progressDrawable="@drawable/progress_circle"
+            android:secondaryProgress="100" />
+        <LinearLayout
+            android:layout_width="@dimen/width_widget"
+
+            android:layout_height="50dp"
+            >
+            <ImageView
+                android:id="@+id/charging"
+                android:layout_width="match_parent"
+                android:gravity="top"
+                android:visibility="invisible"
+                android:layout_height="10dp"
+                android:src="@drawable/ic_lightning_charge_fill"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="@dimen/width_widget"
+            android:layout_height="50dp"
+            android:gravity="center"
+            >
+
+            <TextView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:background="@drawable/ic_phone" />
+        </LinearLayout>
+    </RelativeLayout>
+        <TextView
+            android:id="@+id/batterytext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text=" 0%"
+            android:textColor="@color/white"
+            android:typeface="sans"/>
     </LinearLayout>
 </FrameLayout>
