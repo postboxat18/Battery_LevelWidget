@@ -32,7 +32,7 @@ public class ButtonActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_button);
+        setContentView(R.layout.activity_button_prof);
         AppCompatButton stopServiceButton = (AppCompatButton) findViewById(R.id.stop_foreground_service_button);
         AppCompatButton startServiceButton = (AppCompatButton) findViewById(R.id.start_foreground_service_button);
 
@@ -97,26 +97,26 @@ public class ButtonActivity extends AppCompatActivity {
                     mWaveLoadingView.setBorderColor(Color.parseColor("#FF26FF00"));
                 } */
                 if (i<10){
-                    txtstatus.setText("Battery Status: Critically Low, Please Charge the Device!");
+                    txtstatus.setText("Critically Low, Please Charge the Device!");
                     mWaveLoadingView.setWaveColor(Color.parseColor("#FC0404"));
                     mWaveLoadingView.setBorderColor(Color.parseColor("#D40C1C"));
                 }
                 else if (i>=10 && i<=20){
-                    txtstatus.setText("Battery Status: LOW");
+                    txtstatus.setText("LOW");
                     mWaveLoadingView.setWaveColor(Color.parseColor("#FC0412"));
                     mWaveLoadingView.setBorderColor(Color.parseColor("#FC0404"));
                 }
                 else if (i>20 && i<=50){
-                    txtstatus.setText("Battery Status: Draining");
+                    txtstatus.setText("Draining");
                     mWaveLoadingView.setWaveColor(Color.parseColor("#FCCC04"));
                     mWaveLoadingView.setBorderColor(Color.parseColor("#F4BB13"));
                 }else if (i>50 && i<=80){
-                    txtstatus.setText("Battery Status: Moderate");
+                    txtstatus.setText("Moderate");
                     mWaveLoadingView.setWaveColor(Color.parseColor("#94EC94"));
                     mWaveLoadingView.setBorderColor(Color.parseColor("#4BBC54"));
                 }
                 else if (i>80 && i<=100){
-                    txtstatus.setText("Battery Status: GOOD");
+                    txtstatus.setText("GOOD");
                     mWaveLoadingView.setWaveColor(Color.parseColor("#04E474"));
                     mWaveLoadingView.setBorderColor(Color.parseColor("#04E474"));
                 }
@@ -149,25 +149,25 @@ public class ButtonActivity extends AppCompatActivity {
                                 public void run() {
                                     mWaveLoadingView.setProgressValue(progressStatus);
                                     String x=String.valueOf(i);
-                                    txtbattery_status.setText("Battery Level:"+x+"%");
+                                    txtbattery_status.setText(x+"%");
                                     getChargingLevel(getApplicationContext());
 
                                     //Battery charging conditions
                                     if (isCharging==true && usbCharge==true){
-                                        txtcharge_status.setText("Charging Status: Device Charging");
+                                        txtcharge_status.setText("Device Charging");
                                         txtport.setText("Connected to a USB Port");
                                     }
                                     else if(isCharging==true && acCharge==true){
-                                        txtcharge_status.setText("Charging Status: Device Charging");
+                                        txtcharge_status.setText("Device Charging");
                                         txtport.setText("Connected to an AC power source");
                                     }
                                     else
                                     {
-                                        txtcharge_status.setText("Device Not Charging");
+                                        txtcharge_status.setText("Not Charging");
                                         txtport.setText( "Not Connected To Any Other Device");
                                     }
                                     if (isCharging==true && i==100){
-                                        txtcharge_status.setText("Charging Status: Charging Complete");
+                                        txtcharge_status.setText("Charging Complete");
                                     }
 
 
@@ -190,20 +190,20 @@ public class ButtonActivity extends AppCompatActivity {
 
                 //Battery charging conditions
                 if (isCharging==true && usbCharge==true){
-                    txtcharge_status.setText("Charging Status: Device Charging");
+                    txtcharge_status.setText("Device Charging");
                     txtport.setText("Connected to a USB Port");
                 }
                 else if(isCharging==true && acCharge==true){
-                    txtcharge_status.setText("Charging Status: Device Charging");
+                    txtcharge_status.setText("Device Charging");
                     txtport.setText("Connected to an AC power source");
                 }
                 else
                 {
-                    txtcharge_status.setText("Device Not Charging");
+                    txtcharge_status.setText("Not Charging");
                     txtport.setText( "Not Connected To Any Other Device");
                 }
                 if (isCharging==true && i==100){
-                    txtcharge_status.setText("Charging Status: Charging Complete");
+                    txtcharge_status.setText("Charging Complete");
                 }
 
             }

@@ -8,5 +8,8 @@ http://developer.android.com/guide/topics/appwidgets/index.html#CreatingLayout
     <dimen name="widget_margin">0dp</dimen>
     <dimen name="width_widget">100dp</dimen>
     <dimen name="height_wiget">100dp</dimen>
+    <dimen name="heading_padding">8dp</dimen>
+    <dimen name="sub_head_padding">2dp</dimen>
+    <dimen name="margin_linear_layout">10dp</dimen>
 
 </resources>
