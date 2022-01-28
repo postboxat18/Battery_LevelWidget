@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/aravi/StudioProjects/Battery_LevelWidget/app/src/main/res/drawable-v21/circle.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/aravi/StudioProjects/Battery_LevelWidget/app/src/main/res/drawable-v21/edittext_box.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/aravi/StudioProjects/Battery_LevelWidget/app/src/main/res/drawable/edittext_black.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/aravi/StudioProjects/Battery_LevelWidget/app/src/main/res/drawable/edittext_blur.xml" value="0.26614583333333336" />
@@ -10,11 +11,12 @@
         <entry key="..\:/Users/aravi/StudioProjects/Battery_LevelWidget/app/src/main/res/drawable/ic_phone.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/aravi/StudioProjects/Battery_LevelWidget/app/src/main/res/drawable/ic_phone_black.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/aravi/StudioProjects/Battery_LevelWidget/app/src/main/res/drawable/progress_circle.xml" value="0.14322916666666666" />
+        <entry key="..\:/Users/aravi/StudioProjects/Battery_LevelWidget/app/src/main/res/drawable/progress_circle_main.xml" value="0.6" />
         <entry key="..\:/Users/aravi/StudioProjects/Battery_LevelWidget/app/src/main/res/drawable/progress_circle_prof.xml" value="0.14322916666666666" />
         <entry key="..\:/Users/aravi/StudioProjects/Battery_LevelWidget/app/src/main/res/layout/activity_button.xml" value="0.12708333333333333" />
-        <entry key="..\:/Users/aravi/StudioProjects/Battery_LevelWidget/app/src/main/res/layout/activity_button_prof.xml" value="0.264" />
+        <entry key="..\:/Users/aravi/StudioProjects/Battery_LevelWidget/app/src/main/res/layout/activity_button_prof.xml" value="0.152" />
         <entry key="..\:/Users/aravi/StudioProjects/Battery_LevelWidget/app/src/main/res/layout/activity_main.xml" value="0.12708333333333333" />
-        <entry key="..\:/Users/aravi/StudioProjects/Battery_LevelWidget/app/src/main/res/layout/battery_circle.xml" value="0.536" />
+        <entry key="..\:/Users/aravi/StudioProjects/Battery_LevelWidget/app/src/main/res/layout/battery_circle.xml" value="0.6015037593984962" />
         <entry key="..\:/Users/aravi/StudioProjects/Battery_LevelWidget/app/src/main/res/layout/battery_widget.xml" value="0.12708333333333333" />
         <entry key="app/src/main/res/drawable/button_box.xml" value="0.209375" />
         <entry key="app/src/main/res/drawable/button_stop.xml" value="0.209375" />

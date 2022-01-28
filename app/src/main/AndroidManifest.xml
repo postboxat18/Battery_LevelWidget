@@ -12,7 +12,9 @@
         android:theme="@style/Theme.BatteryLevel">
         <activity
             android:name=".wbutton.ButtonActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            >
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 

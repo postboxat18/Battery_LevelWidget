@@ -40,4 +40,8 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     //wave
     implementation 'me.itangqi.waveloadingview:library:0.3.5'
+
+    implementation 'pl.pawelkleczkowski.customgauge:CustomGauge:1.0.3'
+    //circular progress bar
+    implementation 'pl.pawelkleczkowski.customgauge:CustomGauge:1.0.3'
 }

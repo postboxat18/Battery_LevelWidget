@@ -19,43 +19,35 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="center">
-
             <TextView
                 android:id="@+id/per0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:background="@drawable/ic_0_" />
-
             <TextView
                 android:id="@+id/per25"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/ic__25_"
                 android:visibility="invisible" />
-
             <TextView
                 android:id="@+id/per50"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/ic__50_"
                 android:visibility="invisible" />
-
             <TextView
                 android:id="@+id/per75"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/ic__75__"
                 android:visibility="invisible" />
-
             <TextView
                 android:id="@+id/per100"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/ic__100_"
                 android:visibility="invisible" />
-
-
         </RelativeLayout>
         <TextView
             android:id="@+id/batterytext"
@@ -73,49 +65,49 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="5dp"
-        android:background="@drawable/edittext_box"
+        android:background="@drawable/edittext_blur"
         >
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        >
-
-        <ProgressBar
-            android:id="@+id/progress_bar"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="@dimen/width_widget"
-            android:layout_height="50dp"
-            android:layout_centerInParent="true"
-            android:indeterminate="false"
-            android:max="100"
-            android:progress="0"
-            android:progressDrawable="@drawable/progress_circle"
-            android:secondaryProgress="100" />
-        <LinearLayout
-            android:layout_width="@dimen/width_widget"
-
-            android:layout_height="50dp"
-            >
-            <ImageView
-                android:id="@+id/charging"
-                android:layout_width="match_parent"
-                android:gravity="top"
-                android:visibility="invisible"
-                android:layout_height="10dp"
-                android:src="@drawable/ic_lightning_charge_fill"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="@dimen/width_widget"
-            android:layout_height="50dp"
-            android:gravity="center"
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             >
 
-            <TextView
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:background="@drawable/ic_phone" />
-        </LinearLayout>
-    </RelativeLayout>
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="@dimen/width_widget"
+                android:layout_height="50dp"
+                android:layout_centerInParent="true"
+                android:indeterminate="false"
+                android:max="100"
+                android:progress="0"
+                android:progressDrawable="@drawable/progress_circle"
+                android:secondaryProgress="100" />
+            <LinearLayout
+                android:layout_width="@dimen/width_widget"
+
+                android:layout_height="50dp"
+                >
+                <ImageView
+                    android:id="@+id/charging"
+                    android:layout_width="match_parent"
+                    android:gravity="top"
+                    android:visibility="invisible"
+                    android:layout_height="10dp"
+                    android:src="@drawable/ic_lightning_charge_fill"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="@dimen/width_widget"
+                android:layout_height="50dp"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:background="@drawable/ic_phone" />
+            </LinearLayout>
+        </RelativeLayout>
         <TextView
             android:id="@+id/batterytext"
             android:layout_width="match_parent"

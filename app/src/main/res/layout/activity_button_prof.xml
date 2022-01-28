@@ -5,58 +5,149 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
+    android:background="@drawable/background"
     android:fontFamily="@font/montserrat"
-    android:background="@color/black"
     android:orientation="vertical"
     tools:context=".wbutton.ButtonActivity">
 
-        <TextView
-            android:id="@+id/battermanager"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat"
-            android:gravity="left"
-            android:text="Battery Manager"
+    <TextView
+        android:id="@+id/battermanager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:gravity="left"
+        android:text="Battery Manager"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/progress_bar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/waveLoadingView"
-            android:textColor="@color/white"
-            android:textSize="25dp"
-            android:textStyle="bold" />
+    <me.itangqi.waveloadingview.WaveLoadingView
+        android:id="@+id/waveLoadingView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/batterystatus"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/battermanager"
+        app:wlv_borderColor="#FF5722"
+        app:wlv_borderWidth="3dp"
+        app:wlv_progressValue="40"
+        app:wlv_round_rectangle="true"
+        app:wlv_shapeType="circle"
+        app:wlv_titleCenterStrokeWidth="3dp"
+        app:wlv_triangle_direction="north"
+        app:wlv_waveColor="#C6E6F4" />
 
-        <me.itangqi.waveloadingview.WaveLoadingView
-            android:id="@+id/waveLoadingView"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            app:wlv_borderColor="#FF5722"
-            app:wlv_borderWidth="3dp"
-            app:wlv_progressValue="40"
-            app:wlv_round_rectangle="true"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/battermanager"
-            app:layout_constraintBottom_toTopOf="@id/batterystatus"
-            app:wlv_shapeType="circle"
-            app:wlv_titleCenterStrokeWidth="3dp"
-            app:wlv_triangle_direction="north"
-            app:wlv_waveColor="#C6E6F4" />
+    <pl.pawelkleczkowski.customgauge.CustomGauge
+        android:id="@+id/progress_bar"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_margin="5dp"
+        android:layout_centerHorizontal="true"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        app:gaugeEndValue="100"
+        app:gaugePointEndColor="#03DABB"
+        app:gaugePointStartColor="@color/neon_green"
+        app:gaugeStartAngle="-90"
+        app:gaugePointSize="0"
+        app:gaugeStartValue="0"
+        app:gaugeStrokeCap="ROUND"
+        app:gaugeStrokeColor="@android:color/transparent"
+        app:gaugeStrokeWidth="20dp"
+        app:gaugeSweepAngle="360"
+        app:layout_constraintBottom_toTopOf="@id/batterystatus"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/battermanager" />
+
+    <TextView
+        android:id="@+id/text_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="100%"
+        android:textSize="35dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/batterystatus"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/battermanager" />
+
+    <LinearLayout
+        android:id="@+id/batterystatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/buttonPanel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/progress_bar">
 
         <LinearLayout
-            android:id="@+id/batterystatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/waveLoadingView"
-            app:layout_constraintBottom_toTopOf="@id/buttonPanel"
-            android:orientation="horizontal">
+            android:layout_margin="@dimen/margin_linear_layout"
+            android:background="@drawable/edittext_box">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/margin_linear_layout"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:gravity="center"
+                    android:padding="@dimen/heading_padding"
+                    android:text="Battery Status"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    app:layout_constraintBottom_toTopOf="@id/txtbattery_status"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <me.itangqi.waveloadingview.WaveLoadingView
+                    android:id="@+id/txtbattery_status"
+                    android:layout_width="150dp"
+                    android:layout_height="90dp"
+                    android:layout_gravity="center"
+                    app:layout_constraintBottom_toTopOf="@id/batterystatus"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/battermanager"
+                    app:wlv_borderWidth="3dp"
+                    app:wlv_progressValue="40"
+                    app:wlv_round_rectangle="true"
+                    app:wlv_shapeType="rectangle"
+                    app:wlv_titleCenterStrokeWidth="3dp"
+                    app:wlv_triangle_direction="north"
+                    app:wlv_waveColor="#C6E6F4" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_linear_layout"
+                android:layout_marginTop="@dimen/margin_linear_layout"
+                android:layout_marginEnd="@dimen/margin_linear_layout"
+                android:layout_marginBottom="10dp"
                 android:background="@drawable/edittext_box">
 
                 <LinearLayout
@@ -65,178 +156,154 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
-                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:outlineProvider="paddedBounds"
                         android:padding="@dimen/heading_padding"
                         android:text="Battery Status"
                         android:textColor="@color/white"
                         android:textSize="16dp"
-                        app:layout_constraintBottom_toTopOf="@id/txtbattery_status"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/txtbattery_status"
+                        android:id="@+id/txtstatus"
                         android:layout_width="match_parent"
-                        android:layout_height="70dp"
-                        android:layout_margin="10dp"
-                        android:background="@drawable/edittext_green"
-                        android:fontFamily="@font/montserrat"
+                        android:layout_height="wrap_content"
                         android:gravity="center"
+                        android:outlineProvider="paddedBounds"
                         android:padding="@dimen/sub_head_padding"
-                        android:text="100% "
+                        android:text="Moderate"
+                        android:textColor="@color/green" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_linear_layout"
+                android:layout_marginEnd="@dimen/margin_linear_layout"
+                android:layout_marginBottom="@dimen/margin_linear_layout"
+                android:background="@drawable/edittext_box">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:padding="@dimen/heading_padding"
+                        android:text="Charging Status"
                         android:textColor="@color/white"
                         android:textSize="16dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/text" />
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtcharge_status"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="@dimen/sub_head_padding"
+                        android:text="not Charging"
+                        android:textColor="@color/green" />
                 </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_linear_layout"
-                    android:layout_marginTop="@dimen/margin_linear_layout"
-                    android:layout_marginEnd="@dimen/margin_linear_layout"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/edittext_box">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:outlineProvider="paddedBounds"
-                            android:padding="@dimen/heading_padding"
-                            android:text="Battery Status"
-                            android:textColor="@color/white"
-                            android:textSize="16dp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/txtstatus"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:outlineProvider="paddedBounds"
-                            android:padding="@dimen/sub_head_padding"
-                            android:text="Moderate"
-                            android:textColor="@color/green" />
-                    </LinearLayout>
-                </LinearLayout>
+                android:layout_marginStart="@dimen/margin_linear_layout"
+                android:layout_marginEnd="@dimen/margin_linear_layout"
+                android:layout_marginBottom="@dimen/margin_linear_layout"
+                android:background="@drawable/edittext_box">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_linear_layout"
-                    android:layout_marginBottom="@dimen/margin_linear_layout"
-                    android:layout_marginEnd="@dimen/margin_linear_layout"
-                    android:background="@drawable/edittext_box">
+                    android:orientation="vertical">
 
-                    <LinearLayout
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:padding="@dimen/heading_padding"
-                            android:text="Charging Status"
-                            android:textColor="@color/white"
-                            android:textSize="16dp"
-                            android:textStyle="bold" />
+                        android:layout_gravity="center"
+                        android:padding="@dimen/heading_padding"
+                        android:text="Current Battery Voltage :"
+                        android:textColor="@color/white"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
 
-                        <TextView
-                            android:id="@+id/txtcharge_status"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:padding="@dimen/sub_head_padding"
-                            android:text="not Charging"
-                            android:textColor="@color/green" />
-                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/volTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="@dimen/sub_head_padding"
+                        android:text="0.00v"
+                        android:textColor="@color/green" />
                 </LinearLayout>
-                c
             </LinearLayout>
-
         </LinearLayout>
 
+    </LinearLayout>
 
-        <TextView
-            android:id="@+id/txtport"
+
+    <TextView
+        android:id="@+id/txtport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="@dimen/abc_action_bar_icon_vertical_padding_material"
+        android:text="not conntected to any device"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/buttonPanel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/progress_bar" />
+
+    <LinearLayout
+        android:id="@+id/buttonPanel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/batterystatus">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/start_foreground_service_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:padding="@dimen/abc_action_bar_icon_vertical_padding_material"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_margin="10dp"
+            android:background="@drawable/button_start"
+            android:fontFamily="@font/montserrat"
+            android:padding="10dp"
+            android:text="Start Service"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@id/stop_foreground_service_button"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/waveLoadingView"
-            app:layout_constraintBottom_toTopOf="@id/buttonPanel"
-            android:text="not conntected to any device"
-            android:visibility="gone" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
-            android:id="@+id/buttonPanel"
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/stop_foreground_service_button"
             android:layout_width="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/batterystatus"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_height="wrap_content"
-            >
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/start_foreground_service_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="10dp"
-                android:background="@drawable/button_start"
-                android:fontFamily="@font/montserrat"
-                android:padding="10dp"
-                android:text="Start Service"
-                android:textColor="@color/white"
-                app:layout_constraintBottom_toTopOf="@id/stop_foreground_service_button"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/stop_foreground_service_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="10dp"
-                android:background="@drawable/button_stop"
-                android:fontFamily="@font/montserrat"
-                android:padding="12dp"
-                android:text="Stop Service"
-                android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@id/start_foreground_service_button"
-                app:layout_constraintStart_toStartOf="@id/start_foreground_service_button"
-                app:layout_constraintTop_toBottomOf="@id/start_foreground_service_button" />
-        </LinearLayout>
-
-
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:background="@drawable/button_stop"
+            android:fontFamily="@font/montserrat"
+            android:padding="12dp"
+            android:text="Stop Service"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/start_foreground_service_button"
+            app:layout_constraintStart_toStartOf="@id/start_foreground_service_button"
+            app:layout_constraintTop_toBottomOf="@id/start_foreground_service_button" />
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

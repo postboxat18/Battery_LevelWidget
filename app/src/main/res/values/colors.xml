@@ -12,8 +12,9 @@
     <color name="light_blue_200">#FF81D4FA</color>
     <color name="light_blue_600">#FF039BE5</color>
     <color name="light_blue_900">#FF01579B</color>
-    <color name="neyon_green">#00FF00</color>
+    <color name="neyon_green">#04FC04</color>
     <color name="yellow">#FCEC04</color>
     <color name="red_pink">#E42434</color>
     <color name="neon_green">#00FF00</color>
+    <color name="silver">#4C4C4C</color>
 </resources>
